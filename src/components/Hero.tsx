@@ -3,11 +3,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 
 const HERO_IMAGES = [
-  'https://images.unsplash.com/photo-1549473889-14f410d83298?auto=format&fit=crop&w=3000&q=80',
-  'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=3000&q=80',
-  'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=3000&q=80',
-  'https://images.unsplash.com/photo-1548777123-e216912df7d8?auto=format&fit=crop&w=3000&q=80',
-  'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=3000&q=80',
+  '/images/JDF_Hero_001.jpg',
+  '/images/JDF_Hero_002.jpg',
+  '/images/JDF_Hero_003.jpeg',
 ];
 
 export default function Hero() {
