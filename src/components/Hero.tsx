@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 
 const HERO_IMAGES = [
-  '/images/JDF_Hero_001.jpg',
-  '/images/JDF_Hero_002.jpg',
-  '/images/JDF_Hero_003.jpeg',
+  `${import.meta.env.BASE_URL}images/JDF_Hero_001.jpg`,
+  `${import.meta.env.BASE_URL}images/JDF_Hero_002.jpg`,
+  `${import.meta.env.BASE_URL}images/JDF_Hero_003.jpeg`,
 ];
 
 export default function Hero() {
@@ -63,13 +63,13 @@ export default function Hero() {
            className="flex flex-col sm:flex-row gap-4 justify-center"
         >
            <a
-             href="/#tours"
+             href={`${import.meta.env.BASE_URL}#tours`}
              className="bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-full font-medium text-center transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/20 shadow-lg"
            >
              {t.hero.exploreTours}
            </a>
            <a
-             href="/#join"
+             href={`${import.meta.env.BASE_URL}#join`}
              className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-medium text-center transition-all hover:scale-[1.02] shadow-lg"
            >
              {t.hero.joinCommunity}

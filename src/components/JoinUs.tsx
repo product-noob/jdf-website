@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -7,7 +7,7 @@ export default function JoinUs() {
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', city: '' });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
     setTimeout(() => {

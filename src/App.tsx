@@ -8,7 +8,7 @@ import PastYatraDetail from './pages/PastYatraDetail';
 
 export default function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <LanguageProvider>
         <div className="min-h-screen bg-alabaster font-sans text-slate selection:bg-primary/20 selection:text-charcoal flex flex-col relative">
           <Navbar />
@@ -23,4 +23,3 @@ export default function App() {
     </Router>
   );
 }
-
