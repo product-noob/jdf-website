@@ -1,9 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { motion } from 'motion/react';
-import { useLanguage } from '../context/LanguageContext';
 
 export default function JoinUs() {
-  const { t } = useLanguage();
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', city: '' });
   const [submitted, setSubmitted] = useState(false);
 

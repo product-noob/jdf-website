@@ -6,8 +6,14 @@ import OptimizedImage from './OptimizedImage';
 
 export default function Tours() {
   const { t } = useLanguage();
-  const [filter, setFilter] = useState<'All' | 'National' | 'International'>('All');
+  type TourFilter = 'All' | 'National' | 'International';
+  const [filter, setFilter] = useState<TourFilter>('All');
   const scrollRef = useRef<HTMLDivElement>(null);
+  const tourFilters: { id: TourFilter; label: string }[] = [
+    { id: 'All', label: t.tours.filterAll },
+    { id: 'National', label: t.tours.filterNational },
+    { id: 'International', label: t.tours.filterInternational },
+  ];
   
   const filteredTours = t.tours.toursList.filter(tour => {
     if (filter === 'All') return true;
@@ -62,14 +68,10 @@ export default function Tours() {
             className="flex flex-col items-end gap-6"
           >
             <div className="flex gap-2 bg-white/50 p-1.5 rounded-full border border-slate/10 text-nowrap flex-wrap shrink-0">
-              {[
-                { id: 'All', label: t.tours.filterAll }, 
-                { id: 'National', label: t.tours.filterNational }, 
-                { id: 'International', label: t.tours.filterInternational }
-              ].map((f) => (
+              {tourFilters.map((f) => (
                 <button
                   key={f.id}
-                  onClick={() => setFilter(f.id as any)}
+                  onClick={() => setFilter(f.id)}
                   aria-pressed={filter === f.id}
                   className={`px-6 py-2.5 rounded-full text-sm font-medium transition-colors ${
                     filter === f.id 
