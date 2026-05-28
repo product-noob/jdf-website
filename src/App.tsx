@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import PastYatrasList from './pages/PastYatrasList';
 import PastYatraDetail from './pages/PastYatraDetail';
+import TeamPage from './pages/TeamPage';
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/past-yatras" element={<PastYatrasList />} />
             <Route path="/past-yatras/:id" element={<PastYatraDetail />} />
+            <Route path="/team" element={<TeamPage />} />
           </Routes>
           <Footer />
         </div>

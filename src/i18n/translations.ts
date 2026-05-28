@@ -1,5 +1,457 @@
 export type Language = 'en' | 'hi';
 
+type Tour = {
+  id: number;
+  title: string;
+  location: string;
+  type: string;
+  dates: string;
+  comfort: string;
+  image: string;
+};
+
+type Cause = {
+  title: string;
+  description: string;
+  image: string;
+};
+
+type Testimonial = {
+  quote: string;
+  author: string;
+  role: string;
+  ageGroup: string;
+};
+
+export type PastYatra = {
+  id: number;
+  title: string;
+  location: string;
+  dates: string;
+  image: string;
+  gallery: string[];
+  itinerary: string[];
+  pdf?: {
+    title: string;
+    href: string;
+  };
+};
+
+const imagePath = (fileName: string) => `${import.meta.env.BASE_URL}images/${fileName}`;
+const pdfPath = (fileName: string) => `${import.meta.env.BASE_URL}pdfs/${fileName}`;
+
+const yatraImages = {
+  hero1: imagePath('JDF_Hero_001.jpeg'),
+  hero2: imagePath('JDF_Hero_002.jpg'),
+  hero3: imagePath('JDF_Hero_003.jpeg'),
+  hero4: imagePath('JDF_Hero_004.png'),
+  hero5: imagePath('JDF_Hero_005.jpg'),
+  hero6: imagePath('JDF_Hero_006.png'),
+  seva: imagePath('file_00000000050c7208a2b568b976545586.png'),
+  sneh: imagePath('file_00000000a62c720b9908d1b35d8e3e67.png'),
+  cricket: imagePath('file_00000000a64c720b87adb941358be3bd.png'),
+  navpravas: imagePath('file_00000000d98472089c666b89678b25d5.png'),
+  overseas: imagePath('file_000000001e4471f88638d1164b89154f.png'),
+};
+
+const gallery = (...images: string[]) => images;
+
+const pastYatrasEn: PastYatra[] = [
+  {
+    id: 2015,
+    title: 'Pau Dasham Sangh Yatra',
+    location: 'Dakshin Nakoda Parshwanath Dham, Arsikere',
+    dates: '2015',
+    image: yatraImages.hero1,
+    gallery: gallery(yatraImages.hero1, yatraImages.hero2, yatraImages.hero3, yatraImages.hero4),
+    itinerary: [
+      'JDF began its organized yatra tradition with 80 devotees travelling together for darshan.',
+      'The first journey established the model for shared arrangements, group discipline, and care for families.',
+      'This yatra became the foundation for Jain Dosti Federation as a friendship-led spiritual community.',
+    ],
+  },
+  {
+    id: 2016,
+    title: 'Pau Dasham Mela Sangh Yatra',
+    location: 'Dakshin Nakoda Parshwanath Dham, Tiptur',
+    dates: '2016',
+    image: yatraImages.hero2,
+    gallery: gallery(yatraImages.hero2, yatraImages.hero3, yatraImages.hero4, yatraImages.hero5),
+    itinerary: [
+      'The group expanded its seva work with support for gaushalas and children in need.',
+      'Devotees travelled with stronger coordination and a growing volunteer network.',
+      'Participation grew from 80 to around 180 members, marking a major step in community trust.',
+    ],
+  },
+  {
+    id: 2017,
+    title: 'Pau Dasham Mela Sangh Yatra',
+    location: 'Dakshin Nakoda Parshwanath Dham, Huncha, Birur',
+    dates: '2017',
+    image: yatraImages.hero3,
+    gallery: gallery(yatraImages.hero3, yatraImages.hero4, yatraImages.hero5, yatraImages.hero6),
+    itinerary: [
+      'The federation supported orphanages and children homes with blankets, fruits, sweets, and sports kits.',
+      'The yatra combined darshan, seva, and shared meals for families across age groups.',
+      'Participation increased to around 300 devotees.',
+    ],
+  },
+  {
+    id: 2018,
+    title: 'Pau Dasham Mela Sangh Yatra',
+    location: 'Dakshin Nakoda Parshwanath Dham, Sushil Dham, Krishnagiri',
+    dates: '2018',
+    image: yatraImages.hero4,
+    gallery: gallery(yatraImages.hero4, yatraImages.hero5, yatraImages.hero6, yatraImages.seva),
+    itinerary: [
+      'Seva activities continued through support for orphanages, gaushalas, hospital bills, and school fees.',
+      'The yatra route included important spiritual stops and stronger member coordination.',
+      'The annual gathering crossed around 500 devotees.',
+    ],
+  },
+  {
+    id: 2019,
+    title: 'Pau Dasham Mela Sangh Yatra',
+    location: 'Dakshin Nakoda Parshwanath Dham, Tirupati, Shravanabelagola, Ramanagara',
+    dates: '2019',
+    image: yatraImages.hero5,
+    gallery: gallery(yatraImages.hero5, yatraImages.hero6, yatraImages.hero1, yatraImages.overseas),
+    itinerary: [
+      'JDF supported Jain community programs and service initiatives through the year.',
+      'The yatra included darshan across Dakshin Nakoda, Tirupati, Shravanabelagola, and Ramanagara.',
+      'Participation reached around 600 devotees.',
+    ],
+  },
+  {
+    id: 2020,
+    title: 'COVID Seva Initiative',
+    location: 'Bengaluru and nearby regions',
+    dates: '2020-2021',
+    image: yatraImages.hero6,
+    gallery: gallery(yatraImages.hero6, yatraImages.hero1, yatraImages.hero2, yatraImages.seva),
+    itinerary: [
+      'During the COVID emergency, JDF helped families with hospital bills, medicines, and critical support.',
+      'Volunteers arranged masks, sanitizers, ration kits, food packets, beds, oxygen cylinders, and injections.',
+      'Blood donation and ration distribution efforts reached many families in need.',
+    ],
+  },
+  {
+    id: 2022,
+    title: 'Seva, Sneh Milan, and JDF Cricket Premier League',
+    location: 'Rajajinagar Terapanth Bhavan, Ganesh Bagh, and Hebbal',
+    dates: '2022',
+    image: yatraImages.sneh,
+    gallery: gallery(yatraImages.sneh, yatraImages.cricket, yatraImages.navpravas, yatraImages.hero4),
+    itinerary: [
+      'JDF hosted a blood donation camp during the Terapanth Yuvak Parishad mega drive.',
+      'The federation supported event management during a large chaturmas gathering at Ganesh Bagh.',
+      'A community sneh milan and cricket league helped members connect beyond formal programs.',
+    ],
+  },
+  {
+    id: 2023,
+    title: 'Special Sangh Yatra',
+    location: 'Details to be updated',
+    dates: '2023',
+    image: yatraImages.cricket,
+    gallery: gallery(yatraImages.cricket, yatraImages.navpravas, yatraImages.hero5, yatraImages.hero6),
+    itinerary: [
+      'JDF organized a special yatra and seva program for members.',
+      'The program centered on darshan, group prayer, meals, and volunteer service.',
+      'Detailed route and gallery information will be updated as archival material is finalized.',
+    ],
+  },
+  {
+    id: 2024,
+    title: 'NavPravas Yatra',
+    location: 'NavPravas',
+    dates: '2024',
+    image: yatraImages.navpravas,
+    gallery: gallery(yatraImages.navpravas, yatraImages.hero5, yatraImages.hero6, yatraImages.hero1),
+    itinerary: [
+      'The NavPravas yatra brought JDF families together for a renewed spiritual journey.',
+      'The program included darshan, group prayer, member introductions, and seva-led activities.',
+      'A detailed itinerary and photo archive are available in the attached PDF.',
+    ],
+    pdf: {
+      title: 'NavPravas Yatra PDF',
+      href: pdfPath('2024.pdf'),
+    },
+  },
+  {
+    id: 2025,
+    title: 'Malaysia, Singapore, and Thailand Yatra',
+    location: 'Malaysia, Singapore, and Thailand',
+    dates: '2025',
+    image: yatraImages.overseas,
+    gallery: gallery(yatraImages.overseas, yatraImages.seva, yatraImages.navpravas, yatraImages.hero1),
+    itinerary: [
+      'JDF planned an international yatra across Malaysia, Singapore, and Thailand.',
+      'The journey focuses on Jain temple darshan, local spiritual landmarks, and shared cultural experiences.',
+      'Detailed day-wise routes, hotels, and photo archives will be added as they are finalized.',
+    ],
+  },
+  {
+    id: 2026,
+    title: 'Udupi Yatra',
+    location: 'Udupi',
+    dates: '2026',
+    image: yatraImages.hero6,
+    gallery: gallery(yatraImages.hero6, yatraImages.hero5, yatraImages.hero4, yatraImages.sneh),
+    itinerary: [
+      'The Udupi yatra is planned as a family-focused spiritual program.',
+      'The proposed format includes darshan, group meals, seva activities, and member fellowship.',
+      'Final itinerary, dates, and images will be added once available.',
+    ],
+  },
+];
+
+const pastYatrasHi: PastYatra[] = pastYatrasEn.map((item) => ({
+  ...item,
+  title:
+    {
+      2015: 'पौ दशम संघ यात्रा',
+      2016: 'पौ-दशम मेला संघ यात्रा',
+      2017: 'पौ-दशम मेला संघ यात्रा',
+      2018: 'पौ-दशम मेला संघ यात्रा',
+      2019: 'पौ-दशम मेला संघ यात्रा',
+      2020: 'कोविड सेवा अभियान',
+      2022: 'सेवा, स्नेह मिलन और JDF क्रिकेट प्रीमियर लीग',
+      2023: 'विशेष संघ यात्रा',
+      2024: 'नवप्रवास यात्रा',
+      2025: 'मलेशिया, सिंगापुर और थाईलैंड यात्रा',
+      2026: 'उडुपी यात्रा',
+    }[item.id] ?? item.title,
+  location:
+    {
+      2015: 'दक्षिण नाकोड़ा पार्श्वधाम, अरसीकेरे',
+      2016: 'दक्षिण नाकोड़ा पार्श्वधाम, टिपटूर',
+      2017: 'दक्षिण नाकोड़ा पार्श्वधाम, हुंचा, बीरूर',
+      2018: 'दक्षिण नाकोड़ा पार्श्वधाम, सुशील धाम, कृष्णगिरि',
+      2019: 'दक्षिण नाकोड़ा पार्श्वधाम, तिरुपति, श्रवणबेलगोला, रामनगर',
+      2020: 'बेंगलुरु और आसपास के क्षेत्र',
+      2022: 'राजाजीनगर तेरापंथ भवन, गणेश बाग और हेब्बाल',
+      2023: 'विवरण जल्द अपडेट होगा',
+      2024: 'नवप्रवास',
+      2025: 'मलेशिया, सिंगापुर और थाईलैंड',
+      2026: 'उडुपी',
+    }[item.id] ?? item.location,
+  itinerary: item.itinerary.map((_, index) => {
+    const lines: Record<number, string[]> = {
+      2015: [
+        '80 दर्शनार्थियों के साथ JDF की संगठित यात्रा परंपरा की शुरुआत हुई।',
+        'इस यात्रा ने समूह व्यवस्था, अनुशासन और परिवारों की देखभाल की नींव रखी।',
+        'यहीं से Jain Dosti Federation की सेवा और मैत्री-आधारित पहचान मजबूत हुई।',
+      ],
+      2016: [
+        'गौशाला सेवा और बच्चों की सहायता के साथ सेवा कार्यों का विस्तार हुआ।',
+        'यात्रा में बेहतर समन्वय और सक्रिय स्वयंसेवक व्यवस्था दिखाई दी।',
+        'सदस्यों की संख्या लगभग 80 से बढ़कर 180 तक पहुंची।',
+      ],
+      2017: [
+        'अनाथ आश्रमों और बच्चों के घरों में कंबल, फल, मिठाई और खेल सामग्री दी गई।',
+        'यात्रा में दर्शन, सेवा और सामूहिक भोजन को सुंदर रूप से जोड़ा गया।',
+        'सदस्य संख्या लगभग 300 तक बढ़ी।',
+      ],
+      2018: [
+        'अनाथ आश्रम, गौशाला, अस्पताल बिल और स्कूल फीस में सहयोग जारी रहा।',
+        'यात्रा में महत्वपूर्ण तीर्थ स्थानों और बेहतर सदस्य व्यवस्था को शामिल किया गया।',
+        'वार्षिक संघ में लगभग 500 दर्शनार्थी जुड़े।',
+      ],
+      2019: [
+        'JDF ने वर्ष भर जैन समुदाय के सेवा और धार्मिक कार्यक्रमों में सहयोग किया।',
+        'यात्रा में दक्षिण नाकोड़ा, तिरुपति, श्रवणबेलगोला और रामनगर शामिल रहे।',
+        'सदस्य संख्या लगभग 600 तक पहुंची।',
+      ],
+      2020: [
+        'कोविड आपदा के दौरान JDF ने अस्पताल बिल, दवाइयों और आवश्यक सहायता में सहयोग किया।',
+        'स्वयंसेवकों ने मास्क, सैनिटाइजर, राशन किट, भोजन, बेड, ऑक्सीजन और इंजेक्शन की व्यवस्था में मदद की।',
+        'रक्तदान और राशन वितरण से अनेक परिवारों तक सहायता पहुंची।',
+      ],
+      2022: [
+        'JDF ने मेगा ब्लड डोनेशन ड्राइव में रक्तदान शिविर आयोजित किया।',
+        'गणेश बाग में बड़े चातुर्मास आयोजन के दौरान व्यवस्था में सहयोग दिया गया।',
+        'स्नेह मिलन और क्रिकेट लीग ने सदस्यों को और करीब जोड़ा।',
+      ],
+      2023: [
+        'JDF परिवार के लिए विशेष यात्रा और सेवा कार्यक्रम आयोजित किया गया।',
+        'कार्यक्रम का केंद्र दर्शन, सामूहिक प्रार्थना, भोजन और स्वयंसेवक सेवा रहा।',
+        'मार्ग और फोटो गैलरी की जानकारी सामग्री मिलते ही अपडेट होगी।',
+      ],
+      2024: [
+        'नवप्रवास यात्रा ने JDF परिवारों को नई आध्यात्मिक ऊर्जा के साथ जोड़ा।',
+        'कार्यक्रम में दर्शन, सामूहिक आराधना, परिचय सत्र और सेवा गतिविधियां शामिल रहीं।',
+        'विस्तृत यात्रा PDF के रूप में उपलब्ध है।',
+      ],
+      2025: [
+        'मलेशिया, सिंगापुर और थाईलैंड की अंतरराष्ट्रीय यात्रा की योजना बनाई गई।',
+        'यात्रा में जैन मंदिर दर्शन, स्थानीय आध्यात्मिक स्थल और सांस्कृतिक अनुभव शामिल होंगे।',
+        'दिनवार कार्यक्रम और फोटो गैलरी अंतिम रूप मिलते ही जोड़ी जाएगी।',
+      ],
+      2026: [
+        'उडुपी यात्रा को परिवार-केंद्रित आध्यात्मिक कार्यक्रम के रूप में प्रस्तावित किया गया है।',
+        'दर्शन, सामूहिक भोजन, सेवा और स्नेह मिलन इसका मुख्य हिस्सा रहेंगे।',
+        'अंतिम itinerary, तारीखें और तस्वीरें उपलब्ध होते ही अपडेट होंगी।',
+      ],
+    };
+    return lines[item.id]?.[index] ?? item.itinerary[index] ?? '';
+  }),
+}));
+
+const toursEn: Tour[] = [
+  {
+    id: 1,
+    title: 'Shikharji Mahayatra 2026',
+    location: 'Jharkhand, India',
+    type: 'National',
+    dates: 'Oct 12 - Oct 20, 2026',
+    comfort: 'High Comfort',
+    image: 'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?q=75&w=1600&auto=format&fit=crop',
+  },
+  {
+    id: 2,
+    title: 'Girnar Ji Ascent and Retreat',
+    location: 'Gujarat, India',
+    type: 'National',
+    dates: 'Jan 05 - Jan 10, 2027',
+    comfort: 'Moderate',
+    image: 'https://images.unsplash.com/photo-1549473889-14f410d83298?q=75&w=1600&auto=format&fit=crop',
+  },
+  {
+    id: 3,
+    title: 'Southeast Asia Jain Temples',
+    location: 'Thailand and Malaysia',
+    type: 'International',
+    dates: 'Mar 15 - Mar 25, 2027',
+    comfort: 'Premium Comfort',
+    image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=75&w=1600&auto=format&fit=crop',
+  },
+];
+
+const tourImage = (index: number) => toursEn[index]?.image ?? '';
+
+const toursHi: Tour[] = [
+  {
+    id: 1,
+    title: 'शिखरजी महायात्रा 2026',
+    location: 'झारखंड, भारत',
+    type: 'राष्ट्रीय',
+    dates: '12 अक्टूबर - 20 अक्टूबर, 2026',
+    comfort: 'उच्च आराम',
+    image: tourImage(0),
+  },
+  {
+    id: 2,
+    title: 'गिरनार जी आरोहण और वापसी',
+    location: 'गुजरात, भारत',
+    type: 'राष्ट्रीय',
+    dates: '05 जनवरी - 10 जनवरी, 2027',
+    comfort: 'मध्यम',
+    image: tourImage(1),
+  },
+  {
+    id: 3,
+    title: 'दक्षिण पूर्व एशिया जैन मंदिर',
+    location: 'थाईलैंड और मलेशिया',
+    type: 'अंतरराष्ट्रीय',
+    dates: '15 मार्च - 25 मार्च, 2027',
+    comfort: 'प्रीमियम आराम',
+    image: tourImage(2),
+  },
+];
+
+const causesEn: Cause[] = [
+  {
+    title: 'Jivdaya',
+    description:
+      'Compassion for every living being is central to Jain values. We support gaushalas, panjrapoles, and emergency care programs with food, shelter, and medical help.',
+    image: 'https://images.unsplash.com/photo-1548777123-e216912df7d8?auto=format&fit=crop&w=1600&q=75',
+  },
+  {
+    title: 'Educational Support',
+    description:
+      'We help students through scholarships, school supplies, and mentorship so that families with fewer resources still see a clear path forward.',
+    image: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1600&q=75',
+  },
+  {
+    title: 'Medical Aid Camps',
+    description:
+      'Our volunteers support health camps, eye checkups, medicines, and urgent medical assistance for local communities.',
+    image: 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=1600&q=75',
+  },
+];
+
+const causeImage = (index: number) => causesEn[index]?.image ?? '';
+
+const causesHi: Cause[] = [
+  {
+    title: 'जीवदया',
+    description:
+      'हर जीव के प्रति करुणा जैन मूल्यों का केंद्र है। हम गौशाला, पंजरापोल और आपातकालीन देखभाल में भोजन, आश्रय और चिकित्सा सहायता देते हैं।',
+    image: causeImage(0),
+  },
+  {
+    title: 'शैक्षिक सहायता',
+    description:
+      'हम छात्रवृत्ति, स्कूल सामग्री और मार्गदर्शन के माध्यम से बच्चों और परिवारों को आगे बढ़ने का अवसर देते हैं।',
+    image: causeImage(1),
+  },
+  {
+    title: 'चिकित्सा सहायता शिविर',
+    description:
+      'स्वयंसेवक स्वास्थ्य शिविर, नेत्र जांच, दवाइयों और जरूरी चिकित्सा सहयोग में सक्रिय भूमिका निभाते हैं।',
+    image: causeImage(2),
+  },
+];
+
+const testimonialsEn: Testimonial[] = [
+  {
+    quote:
+      'Traveling with JDF to Shikharji was phenomenal. The arrangements were thoughtful for my parents, and the volunteer spirit stayed with us long after the journey.',
+    author: 'Ramesh Shah',
+    role: 'Member since 2018',
+    ageGroup: '55 years',
+  },
+  {
+    quote:
+      'I found a real sense of belonging here. The medical camps showed me how powerful a community can be when service is organized with care.',
+    author: 'Priya Desai',
+    role: 'Youth Volunteer',
+    ageGroup: '28 years',
+  },
+  {
+    quote:
+      'The blend of spirituality during yatras and active charity work gives life a deeper purpose. JDF feels like an extended family.',
+    author: 'Ketan Mehta',
+    role: 'Committee Lead',
+    ageGroup: '45 years',
+  },
+];
+
+const testimonialsHi: Testimonial[] = [
+  {
+    quote:
+      'JDF के साथ शिखरजी यात्रा अद्भुत रही। मेरे माता-पिता के लिए व्यवस्था बहुत सोच-समझकर की गई थी और सेवा भाव ने हमें गहराई से छुआ।',
+    author: 'रमेश शाह',
+    role: '2018 से सदस्य',
+    ageGroup: '55 वर्ष',
+  },
+  {
+    quote:
+      'यहां मुझे अपनापन मिला। चिकित्सा शिविरों ने दिखाया कि जब सेवा व्यवस्थित होती है तो समुदाय कितनी बड़ी शक्ति बन जाता है।',
+    author: 'प्रिया देसाई',
+    role: 'युवा स्वयंसेवक',
+    ageGroup: '28 वर्ष',
+  },
+  {
+    quote:
+      'यात्राओं की आध्यात्मिकता और सक्रिय सेवा का संगम जीवन को उद्देश्य देता है। JDF एक विस्तारित परिवार जैसा लगता है।',
+    author: 'केतन मेहता',
+    role: 'समिति प्रमुख',
+    ageGroup: '45 वर्ष',
+  },
+];
+
 export const translations = {
   en: {
     nav: {
@@ -9,189 +461,91 @@ export const translations = {
       seva: 'Seva',
       aboutUs: 'About Us',
       joinUs: 'Join Us',
+      team: 'Team',
     },
     hero: {
       welcome: 'Welcome to Jain Dosti Federation',
       title1: 'Journey Together.',
       title2: 'Serve Together.',
       title3: 'Grow Together.',
-      subtitle: 'Finding profound spiritual community through shared values. Join us on transformative spiritual Darshan tours and meaningful philanthropic missions.',
+      subtitle:
+        'Finding spiritual community through shared values, carefully organized darshan yatras, and meaningful seva.',
       exploreTours: 'Explore Tours',
       joinCommunity: 'Join the Community',
     },
     motto: {
-      text: "A Step Towards Service",
+      text: 'A Step Towards Service',
     },
     pastYatras: {
-      title: 'Past Darshan Yatras',
-      subtitle: 'Cherished memories and spiritual milestones from our previous journeys.',
-      viewDetails: 'View Details',
+      title: 'Jain Dosti Federation Since 2015',
+      subtitle: 'A timeline of memorable yatras, seva milestones, and community gatherings.',
+      viewDetails: 'View details',
       close: 'Close',
-      itineraryTitle: 'Broad Itinerary',
-      galleryTitle: 'Gallery',
-      list: [
-        {
-          id: 101,
-          title: 'Palitana Shashwat Tirth Yatra',
-          location: 'Gujarat, India',
-          dates: 'Nov 10 - Nov 15, 2025',
-          image: 'https://images.unsplash.com/photo-1549473889-14f410d83298?auto=format&fit=crop&w=800&q=80',
-          gallery: [
-            'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=400&q=80',
-            'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&q=80',
-            'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=400&q=80'
-          ],
-          itinerary: [
-            'Day 1: Arrival in Bhavnagar & transfer to Palitana',
-            'Day 2: First climbing & Taleti darshan',
-            'Day 3: Navtuk Darshan & Chaityavandan',
-            'Day 4: Gheti Pag Darshan & Seva at local Panjrapole',
-            'Day 5: Departure'
-          ]
-        },
-        {
-          id: 102,
-          title: 'Sammed Shikharji Yatra',
-          location: 'Jharkhand, India',
-          dates: 'Oct 01 - Oct 08, 2024',
-          image: 'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=800&q=80',
-          gallery: [
-            'https://images.unsplash.com/photo-1548777123-e216912df7d8?auto=format&fit=crop&w=400&q=80',
-            'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=400&q=80',
-            'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=400&q=80'
-          ],
-          itinerary: [
-            'Day 1-2: Travel to Madhuban',
-            'Day 3: Base camp acclimatization and local darshan',
-            'Day 4: Pahad Yatra (Vandana) - 27 Tonks',
-            'Day 5: Bhomiyaji Maharaj Darshan',
-            'Day 6: Medical Camp Seva & Departure'
-          ]
-        }
-      ]
+      itineraryTitle: 'Detailed itinerary',
+      galleryTitle: 'Yatra gallery',
+      list: pastYatrasEn,
     },
     pillars: {
       title: 'The Pillars of Our Brotherhood',
-      subtitle: 'We unite individuals through the shared pursuits of inward reflection and outward compassion.',
+      subtitle: 'We unite individuals through inward reflection, friendship, and outward compassion.',
       travelWithUs: 'Travel With Us',
       spiritualDarshan: 'Spiritual Darshan',
-      travelDesc: 'Embark on carefully curated Yatras to sacred destinations. Experience comfortable travel thoughtfully designed for all ages, fostering deep spiritual connections and lasting friendships along the way.',
+      travelDesc:
+        'Join carefully planned yatras to sacred sites, designed for comfort, safety, spiritual focus, and lasting friendship.',
       serveWithUs: 'Serve With Us',
-      philanthropySeva: 'Philanthropy & Seva',
-      serveDesc: 'Extend the values of Jainism into active service. From organizing medical camps for the under-resourced to championing Jivdaya (animal welfare), we believe true friendship is built through shared selflessness.',
+      philanthropySeva: 'Philanthropy and Seva',
+      serveDesc:
+        'Extend Jain values into active service through medical aid, education, jivdaya, and direct community support.',
       learnMore: 'Learn more',
     },
     tours: {
-      title: 'Upcoming Spiritual Journeys',
-      subtitle: 'Meticulously planned for comfort, safety, and deep spiritual immersion.',
+      title: 'Upcoming Spiritual Yatras',
+      subtitle: 'Thoughtfully planned journeys for comfort, safety, and deep spiritual immersion.',
       filterAll: 'All',
       filterNational: 'National',
       filterInternational: 'International',
       viewItinerary: 'View Itinerary',
       comfortLevel: 'Comfort Level:',
-      toursList: [
-        {
-          id: 1,
-          title: 'Shikharji Mahayatra 2026',
-          location: 'Jharkhand, India',
-          type: 'National',
-          dates: 'Oct 12 - Oct 20, 2026',
-          comfort: 'High Comfort',
-          image: 'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?q=80&w=3174&auto=format&fit=crop',
-        },
-        {
-          id: 2,
-          title: 'Girnar Ji Ascent & Retreat',
-          location: 'Gujarat, India',
-          type: 'National',
-          dates: 'Jan 05 - Jan 10, 2027',
-          comfort: 'Moderate',
-          image: 'https://images.unsplash.com/photo-1549473889-14f410d83298?q=80&w=2938&auto=format&fit=crop',
-        },
-        {
-          id: 3,
-          title: 'Southeast Asia Jain Temples',
-          location: 'Thailand & Malaysia',
-          type: 'International',
-          dates: 'Mar 15 - Mar 25, 2027',
-          comfort: 'Premium Luxury',
-          image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2600&auto=format&fit=crop',
-        }
-      ]
+      toursList: toursEn,
     },
     philanthropy: {
       mealsServed: 'Meals Served',
-      medicalCamps: 'Medical Camps run',
+      medicalCamps: 'Medical Camps',
       activeVolunteers: 'Active Volunteers',
       title: 'Seva: Service Beyond Self',
-      subtitle: 'Our commitment to uplifting communities and protecting life, turning compassion into actionable impact.',
-      causes: [
-        {
-          title: "Jivdaya (Animal Welfare)",
-          description: "Compassion towards all living beings is the core of Jain philosophy. We support gaushalas, panjrapoles, and emergency medical camps to provide shelter, food, and care for animals in need.",
-          image: "https://images.unsplash.com/photo-1548777123-e216912df7d8?auto=format&fit=crop&w=2940&q=80"
-        },
-        {
-          title: "Educational Support",
-          description: "Empowering the next generation. Our federation funds educational scholarships, supplies to underserved schools, and mentorship programs to guarantee every child has the opportunity to shine.",
-          image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=3032&q=80"
-        },
-        {
-          title: "Medical Aid Camps",
-          description: "Providing accessible healthcare to those who cannot afford it. We regularly organize free eye-checkup camps, general health screening, and provide necessary medications to local communities.",
-          image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=3000&q=80"
-        }
-      ],
+      subtitle: 'Turning compassion into practical help for people, animals, and communities.',
+      causes: causesEn,
       directInvolvement: 'Direct community involvement',
-      transparentFunding: '100% transparent funding',
+      transparentFunding: 'Transparent funding',
       joinUsTitle: 'Join Us in Making a Difference',
-      joinUsSubtitle: "Your contribution enables us to expand our reach. Whether it's feeding the hungry or educating a child, every act of Seva matters.",
-      supportCauses: 'Support Our Causes'
+      joinUsSubtitle: 'Every act of seva matters, whether it feeds a family, educates a child, or protects a living being.',
+      supportCauses: 'Support Our Causes',
     },
     testimonials: {
       title: 'Voices of Our Community',
-      subtitle: 'Hear from the individuals whose lives have been touched by friendship and purpose.',
-      list: [
-        {
-          quote: "Traveling with JDF to Shikharji was phenomenal. The arrangements were perfect for my parents, and seeing our younger volunteers serve alongside us was truly beautiful.",
-          author: "Ramesh Shah",
-          role: "Member since 2018",
-          ageGroup: "55 years",
-        },
-        {
-          quote: "I found a true sense of belonging here. The medical camps we organized last year opened my eyes to the power of community when united by Jain principles.",
-          author: "Priya Desai",
-          role: "Youth Volunteer",
-          ageGroup: "28 years",
-        },
-        {
-          quote: "The seamless blend of spirituality during Yatras and active charity work gives my life immense purpose. It's more than an organization; it's an extended family.",
-          author: "Ketan Mehta",
-          role: "Committee Lead",
-          ageGroup: "45 years",
-        }
-      ]
+      subtitle: 'Hear from members whose lives have been shaped by friendship and purpose.',
+      list: testimonialsEn,
     },
     footer: {
-      title: 'Jain Dosti Fed.',
+      title: 'Jain Dosti Federation',
       desc: 'Building lifelong friendships grounded in Jain values through spiritual journeys and philanthropic service.',
       explore: 'Explore',
       aboutUs: 'About Us',
       upcomingYatras: 'Upcoming Yatras',
-      philanthropyProjects: 'Philanthropy Projects',
-      memberDirectory: 'Member Directory',
+      philanthropyProjects: 'Seva Projects',
+      memberDirectory: 'Team',
       resources: 'Resources',
-      downloadItineraries: 'Download Itineraries',
+      downloadItineraries: 'Past Yatras',
       volunteerGuidelines: 'Volunteer Guidelines',
       donationFaqs: 'Donation FAQs',
       safetyProtocols: 'Safety Protocols',
       contact: 'Contact',
-      address1: '108 Ahimsa Marg, Heritage District',
-      address2: 'Mumbai, India 400001',
+      address1: 'No. 2, 5th Main Road, Ganganagar',
+      address2: 'Bengaluru, India 560032',
       rights: 'Jain Dosti Federation. All rights reserved.',
       privacyPolicy: 'Privacy Policy',
       termsOfService: 'Terms of Service',
-    }
+    },
   },
   hi: {
     nav: {
@@ -201,188 +555,89 @@ export const translations = {
       seva: 'सेवा',
       aboutUs: 'हमारे बारे में',
       joinUs: 'हमसे जुड़ें',
+      team: 'टीम',
     },
     hero: {
       welcome: 'जैन दोस्ती फेडरेशन में आपका स्वागत है',
       title1: 'एक साथ यात्रा करें।',
       title2: 'एक साथ सेवा करें।',
-      title3: 'एक साथ बढ़ें।',
-      subtitle: 'साझा मूल्यों के माध्यम से गहन आध्यात्मिक समुदाय खोजना। परिवर्तनकारी आध्यात्मिक दर्शन यात्राओं और सार्थक परोपकारी मिशनों में हमारे साथ जुड़ें।',
-      exploreTours: 'यात्राएं खोजें',
+      title3: 'एक साथ आगे बढ़ें।',
+      subtitle: 'साझा मूल्यों, सुव्यवस्थित दर्शन यात्राओं और अर्थपूर्ण सेवा से जुड़ा आध्यात्मिक समुदाय।',
+      exploreTours: 'यात्राएं देखें',
       joinCommunity: 'समुदाय से जुड़ें',
     },
     motto: {
-      text: "एक कदम सेवा की ओर",
+      text: 'सेवा की ओर एक कदम',
     },
     pastYatras: {
-      title: 'पिछली दर्शन यात्राएं',
-      subtitle: 'हमारी पिछली यात्राओं की संजोई हुई यादें और आध्यात्मिक मील के पत्थर।',
-      viewDetails: 'विवरण देखें',
+      title: 'वर्ष 2015 से जैन दोस्ती फेडरेशन',
+      subtitle: 'यादगार यात्राओं, सेवा उपलब्धियों और सामुदायिक मिलन की समयरेखा।',
+      viewDetails: 'और देखें',
       close: 'बंद करें',
-      itineraryTitle: 'विस्तृत यात्रा कार्यक्रम',
-      galleryTitle: 'गैलरी',
-      list: [
-        {
-          id: 101,
-          title: 'पालीताणा शाश्वत तीर्थ यात्रा',
-          location: 'गुजरात, भारत',
-          dates: '10 नवंबर - 15 नवंबर, 2025',
-          image: 'https://images.unsplash.com/photo-1549473889-14f410d83298?auto=format&fit=crop&w=800&q=80',
-          gallery: [
-            'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=400&q=80',
-            'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&q=80',
-            'https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=400&q=80'
-          ],
-          itinerary: [
-            'दिन 1: भावनगर आगमन और पालीताणा प्रस्थान',
-            'दिन 2: पहली चढ़ाई और तलेटी दर्शन',
-            'दिन 3: नवटूक दर्शन और चैत्यवंदन',
-            'दिन 4: घेटी पग दर्शन और स्थानीय पांजरापोल में सेवा',
-            'दिन 5: प्रस्थान'
-          ]
-        },
-        {
-          id: 102,
-          title: 'सम्मेद शिखरजी यात्रा',
-          location: 'झारखंड, भारत',
-          dates: '01 अक्टूबर - 08 अक्टूबर, 2024',
-          image: 'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=800&q=80',
-          gallery: [
-            'https://images.unsplash.com/photo-1548777123-e216912df7d8?auto=format&fit=crop&w=400&q=80',
-            'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=400&q=80',
-            'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=400&q=80'
-          ],
-          itinerary: [
-            'दिन 1-2: मधुबन की यात्रा',
-            'दिन 3: बेस कैंप अनुकूलन और स्थानीय दर्शन',
-            'दिन 4: पहाड़ यात्रा (वंदना) - 27 टोंक',
-            'दिन 5: भोमियाजी महाराज दर्शन',
-            'दिन 6: चिकित्सा शिविर सेवा और प्रस्थान'
-          ]
-        }
-      ]
+      itineraryTitle: 'विस्तृत विवरण',
+      galleryTitle: 'यात्रा की झलकियां',
+      list: pastYatrasHi,
     },
     pillars: {
       title: 'हमारे भाईचारे के स्तंभ',
-      subtitle: 'हम आंतरिक चिंतन और बाहरी करुणा की साझा खोज के माध्यम से व्यक्तियों को एकजुट करते हैं।',
+      subtitle: 'हम आत्मचिंतन, मैत्री और करुणामय सेवा के माध्यम से लोगों को जोड़ते हैं।',
       travelWithUs: 'हमारे साथ यात्रा करें',
       spiritualDarshan: 'आध्यात्मिक दर्शन',
-      travelDesc: 'पवित्र स्थलों की सावधानीपूर्वक तैयार की गई यात्राओं पर निकलें। सभी उम्र के लोगों के लिए विचारपूर्वक डिजाइन की गई आरामदायक यात्रा का अनुभव करें, जो गहरे आध्यात्मिक संबंध और स्थायी मित्रता को बढ़ावा देती है।',
+      travelDesc:
+        'पवित्र स्थलों की सुव्यवस्थित यात्राओं में शामिल हों, जहां आराम, सुरक्षा, आध्यात्मिकता और मैत्री का ध्यान रखा जाता है।',
       serveWithUs: 'हमारे साथ सेवा करें',
       philanthropySeva: 'परोपकार और सेवा',
-      serveDesc: 'जैन धर्म के मूल्यों को सक्रिय सेवा में विस्तारित करें। कम संसाधन वालों के लिए चिकित्सा शिविर आयोजित करने से लेकर जीवदया (पशु कल्याण) को बढ़ावा देने तक, हमारा मानना है कि सच्ची मित्रता साझा निस्वार्थता के माध्यम से बनती है।',
+      serveDesc:
+        'चिकित्सा सहायता, शिक्षा, जीवदया और सामुदायिक सहयोग के माध्यम से जैन मूल्यों को सेवा में बदलें।',
       learnMore: 'और जानें',
     },
     tours: {
       title: 'आगामी आध्यात्मिक यात्राएं',
-      subtitle: 'आराम, सुरक्षा और गहरे आध्यात्मिक विसर्जन के लिए सावधानीपूर्वक योजना बनाई गई।',
+      subtitle: 'आराम, सुरक्षा और गहरे आध्यात्मिक अनुभव के लिए योजनाबद्ध यात्राएं।',
       filterAll: 'सभी',
       filterNational: 'राष्ट्रीय',
-      filterInternational: 'अंतर्राष्ट्रीय',
+      filterInternational: 'अंतरराष्ट्रीय',
       viewItinerary: 'कार्यक्रम देखें',
       comfortLevel: 'आराम का स्तर:',
-      toursList: [
-        {
-          id: 1,
-          title: 'शिखरजी महायात्रा 2026',
-          location: 'झारखंड, भारत',
-          type: 'राष्ट्रीय',
-          dates: '12 अक्टूबर - 20 अक्टूबर, 2026',
-          comfort: 'उच्च आराम',
-          image: 'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?q=80&w=3174&auto=format&fit=crop',
-        },
-        {
-          id: 2,
-          title: 'गिरनार जी आरोहण और वापसी',
-          location: 'गुजरात, भारत',
-          type: 'राष्ट्रीय',
-          dates: '05 जनवरी - 10 जनवरी, 2027',
-          comfort: 'मध्यम',
-          image: 'https://images.unsplash.com/photo-1549473889-14f410d83298?q=80&w=2938&auto=format&fit=crop',
-        },
-        {
-          id: 3,
-          title: 'दक्षिण पूर्व एशिया जैन मंदिर',
-          location: 'थाईलैंड और मलेशिया',
-          type: 'अंतर्राष्ट्रीय',
-          dates: '15 मार्च - 25 मार्च, 2027',
-          comfort: 'प्रीमियम लग्जरी',
-          image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=80&w=2600&auto=format&fit=crop',
-        }
-      ]
+      toursList: toursHi,
     },
     philanthropy: {
       mealsServed: 'भोजन परोसा गया',
-      medicalCamps: 'चिकित्सा शिविर चलाए गए',
+      medicalCamps: 'चिकित्सा शिविर',
       activeVolunteers: 'सक्रिय स्वयंसेवक',
-      title: 'सेवा: स्वार्थ से परे सेवा',
-      subtitle: 'समुदायों के उत्थान और जीवन की रक्षा के लिए हमारी प्रतिबद्धता, करुणा को कार्रवाई योग्य प्रभाव में बदलना।',
-      causes: [
-        {
-          title: "जीवदया (पशु कल्याण)",
-          description: "सभी जीवित प्राणियों के प्रति करुणा जैन दर्शन का मूल है। हम जरूरतमंद जानवरों को आश्रय, भोजन और देखभाल प्रदान करने के लिए गौशालाओं, पंजरापोल और आपातकालीन चिकित्सा शिविरों का समर्थन करते हैं।",
-          image: "https://images.unsplash.com/photo-1548777123-e216912df7d8?auto=format&fit=crop&w=2940&q=80"
-        },
-        {
-          title: "शैक्षिक सहायता",
-          description: "अगली पीढ़ी को सशक्त बनाना। हमारा फेडरेशन शैक्षिक छात्रवृत्ति, कम सेवा वाले स्कूलों को आपूर्ति और हर बच्चे को चमकने का अवसर सुनिश्चित करने के लिए मेंटरशिप कार्यक्रमों को निधि देता है।",
-          image: "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=3032&q=80"
-        },
-        {
-          title: "चिकित्सा सहायता शिविर",
-          description: "उन लोगों को सुलभ स्वास्थ्य सेवा प्रदान करना जो इसे वहन नहीं कर सकते। हम नियमित रूप से मुफ्त नेत्र जांच शिविर, सामान्य स्वास्थ्य जांच और स्थानीय समुदायों को आवश्यक दवाएं प्रदान करते हैं।",
-          image: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?auto=format&fit=crop&w=3000&q=80"
-        }
-      ],
+      title: 'सेवा: स्वार्थ से परे',
+      subtitle: 'करुणा को लोगों, जीवों और समुदायों के लिए व्यावहारिक सहायता में बदलना।',
+      causes: causesHi,
       directInvolvement: 'प्रत्यक्ष सामुदायिक भागीदारी',
-      transparentFunding: '100% पारदर्शी वित्तपोषण',
+      transparentFunding: 'पारदर्शी सहयोग',
       joinUsTitle: 'बदलाव लाने में हमारे साथ जुड़ें',
-      joinUsSubtitle: 'आपका योगदान हमें अपनी पहुंच का विस्तार करने में सक्षम बनाता है। चाहे वह भूखों को खाना खिलाना हो या किसी बच्चे को शिक्षित करना हो, सेवा का हर कार्य मायने रखता है।',
-      supportCauses: 'हमारे कारणों का समर्थन करें'
+      joinUsSubtitle: 'सेवा का हर कार्य मायने रखता है, चाहे वह भोजन, शिक्षा या जीवदया से जुड़ा हो।',
+      supportCauses: 'सेवा कार्यों का समर्थन करें',
     },
     testimonials: {
-      title: 'हमारे समुदाय की आवाज़ें',
-      subtitle: 'उन व्यक्तियों से सुनें जिनके जीवन को मित्रता और उद्देश्य ने छुआ है।',
-      list: [
-        {
-          quote: "जेडीएफ के साथ शिखरजी की यात्रा अभूतपूर्व थी। मेरे माता-पिता के लिए व्यवस्था एकदम सही थी, और हमारे युवा स्वयंसेवकों को हमारे साथ सेवा करते देखना वास्तव में सुंदर था।",
-          author: "रमेश शाह",
-          role: "2018 से सदस्य",
-          ageGroup: "55 वर्ष",
-        },
-        {
-          quote: "मुझे यहाँ अपनेपन का सच्चा एहसास मिला। पिछले साल हमने जो चिकित्सा शिविर आयोजित किए थे, उन्होंने जैन सिद्धांतों द्वारा एकजुट होने पर समुदाय की शक्ति के प्रति मेरी आँखें खोल दीं।",
-          author: "प्रिया देसाई",
-          role: "युवा स्वयंसेवक",
-          ageGroup: "28 वर्ष",
-        },
-        {
-          quote: "यात्राओं के दौरान आध्यात्मिकता का सहज मिश्रण और सक्रिय दान कार्य मेरे जीवन को अपार उद्देश्य देता है। यह एक संगठन से कहीं अधिक है; यह एक विस्तारित परिवार है।",
-          author: "केतन मेहता",
-          role: "समिति प्रमुख",
-          ageGroup: "45 वर्ष",
-        }
-      ]
+      title: 'हमारे समुदाय की आवाजें',
+      subtitle: 'उन सदस्यों से सुनें जिनके जीवन को मैत्री और उद्देश्य ने छुआ है।',
+      list: testimonialsHi,
     },
     footer: {
-      title: 'जैन दोस्ती फेड.',
+      title: 'जैन दोस्ती फेडरेशन',
       desc: 'आध्यात्मिक यात्राओं और परोपकारी सेवा के माध्यम से जैन मूल्यों पर आधारित आजीवन मित्रता का निर्माण।',
       explore: 'खोजें',
       aboutUs: 'हमारे बारे में',
       upcomingYatras: 'आगामी यात्राएं',
-      philanthropyProjects: 'परोपकार परियोजनाएं',
-      memberDirectory: 'सदस्य निर्देशिका',
+      philanthropyProjects: 'सेवा परियोजनाएं',
+      memberDirectory: 'टीम',
       resources: 'संसाधन',
-      downloadItineraries: 'यात्रा कार्यक्रम डाउनलोड करें',
+      downloadItineraries: 'पिछली यात्राएं',
       volunteerGuidelines: 'स्वयंसेवक दिशानिर्देश',
-      donationFaqs: 'दान संबंधी सामान्य प्रश्न',
+      donationFaqs: 'दान संबंधी प्रश्न',
       safetyProtocols: 'सुरक्षा प्रोटोकॉल',
-      contact: 'संपर्क करें',
-      address1: '108 अहिंसा मार्ग, हेरिटेज डिस्ट्रिक्ट',
-      address2: 'मुंबई, भारत 400001',
+      contact: 'संपर्क',
+      address1: 'नं. 2, 5वीं मेन रोड, गंगानगर',
+      address2: 'बेंगलुरु, भारत 560032',
       rights: 'जैन दोस्ती फेडरेशन। सर्वाधिकार सुरक्षित।',
       privacyPolicy: 'गोपनीयता नीति',
       termsOfService: 'सेवा की शर्तें',
-    }
-  }
+    },
+  },
 };

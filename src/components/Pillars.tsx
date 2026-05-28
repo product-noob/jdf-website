@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Map, HeartHandshake } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import OptimizedImage from './OptimizedImage';
 
 export default function Pillars() {
   const { t } = useLanguage();
@@ -54,18 +55,20 @@ export default function Pillars() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-white rounded-[24px] overflow-hidden group shadow-sm hover:shadow-xl transition-all duration-500 border border-slate/5"
+              className="bg-paper rounded-panel overflow-hidden group shadow-paper hover:shadow-lifted transition-all duration-500 border border-line"
             >
               <div className="h-64 overflow-hidden relative">
-                <img 
+                <OptimizedImage
                   src={pillar.image} 
                   alt={pillar.title} 
+                  width={900}
+                  height={576}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-6 left-6 text-white flex items-center gap-3">
                   <div className="bg-white/20 backdrop-blur-md p-3 rounded-full">
-                    <pillar.icon size={24} strokeWidth={1.5} />
+                    <pillar.icon size={24} strokeWidth={1.5} aria-hidden="true" />
                   </div>
                   <div>
                     <p className="text-white/80 text-sm font-medium tracking-wide uppercase">{pillar.subtitle}</p>
@@ -78,7 +81,7 @@ export default function Pillars() {
                   {pillar.description}
                 </p>
                 <button className="mt-6 text-primary font-medium flex items-center gap-2 group-hover:gap-3 transition-all">
-                  {t.pillars.learnMore} <span aria-hidden="true">→</span>
+                  {t.pillars.learnMore} <span aria-hidden="true">�</span>
                 </button>
               </div>
             </motion.div>

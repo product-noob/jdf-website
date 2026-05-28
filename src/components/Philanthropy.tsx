@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { Heart } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import OptimizedImage from './OptimizedImage';
 
 function AnimatedCounter({ end, suffix = "", duration = 2 }: { end: number, suffix?: string, duration?: number }) {
   const [count, setCount] = useState(0);
@@ -101,10 +102,12 @@ export default function Philanthropy() {
                 transition={{ duration: 0.7 }}
                 className="w-full md:w-1/2"
               >
-                <div className="rounded-2xl overflow-hidden shadow-xl shadow-slate/5 aspect-[4/3]">
-                  <img 
+                <div className="rounded-panel overflow-hidden shadow-paper aspect-[4/3]">
+                  <OptimizedImage
                     src={cause.image} 
                     alt={cause.title} 
+                    width={900}
+                    height={675}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" 
                   />
                 </div>
@@ -145,7 +148,7 @@ export default function Philanthropy() {
           className="mt-24 text-center"
           id="donate"
         >
-          <div className="bg-cream border border-primary/20 rounded-3xl p-10 md:p-16 max-w-4xl mx-auto shadow-sm">
+          <div className="bg-paper-warm border border-primary/20 rounded-panel p-10 md:p-16 max-w-4xl mx-auto shadow-paper">
             <Heart size={40} className="text-primary mx-auto mb-6" strokeWidth={1.5} />
             <h3 className="text-2xl md:text-3xl font-serif font-bold text-charcoal mb-4">
               {t.philanthropy.joinUsTitle}

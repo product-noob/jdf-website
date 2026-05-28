@@ -17,7 +17,7 @@ export default function JoinUs() {
   };
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden" id="join">
+    <section className="py-24 bg-paper relative overflow-hidden" id="join">
       {/* Decorative background flair */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-cream rounded-l-[100px] opacity-50 hidden lg:block pointer-events-none"></div>
 
@@ -56,7 +56,7 @@ export default function JoinUs() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <div className="bg-cream rounded-3xl p-8 md:p-10 shadow-xl border border-white relative overflow-hidden">
+          <div className="bg-paper-warm rounded-panel p-8 md:p-10 shadow-paper border border-line relative overflow-hidden">
             {/* Subtle overlay accent */}
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-orange-400"></div>
             
@@ -84,7 +84,7 @@ export default function JoinUs() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full bg-white border border-slate/20 rounded-xl px-4 py-3.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-charcoal"
+                    className="w-full bg-paper border border-line rounded-paper px-4 py-3.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-charcoal"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -98,7 +98,7 @@ export default function JoinUs() {
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-white border border-slate/20 rounded-xl px-4 py-3.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-charcoal"
+                      className="w-full bg-paper border border-line rounded-paper px-4 py-3.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-charcoal"
                       placeholder="+91"
                     />
                   </div>
@@ -110,7 +110,7 @@ export default function JoinUs() {
                       required
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      className="w-full bg-white border border-slate/20 rounded-xl px-4 py-3.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-charcoal"
+                      className="w-full bg-paper border border-line rounded-paper px-4 py-3.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-charcoal"
                       placeholder="e.g. Mumbai"
                     />
                   </div>
@@ -123,7 +123,7 @@ export default function JoinUs() {
                     id="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-white border border-slate/20 rounded-xl px-4 py-3.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-charcoal"
+                    className="w-full bg-paper border border-line rounded-paper px-4 py-3.5 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors text-charcoal"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -131,7 +131,7 @@ export default function JoinUs() {
                 <div className="pt-2">
                   <button 
                     type="submit"
-                    className="w-full bg-primary hover:bg-primary-hover text-white font-medium px-6 py-4 rounded-xl transition-all shadow-md hover:shadow-xl hover:shadow-primary/20 transform hover:-translate-y-1"
+                    className="w-full bg-primary hover:bg-primary-hover text-white font-medium px-6 py-4 rounded-paper transition-all shadow-md hover:shadow-lifted hover:shadow-primary/20 transform hover:-translate-y-1"
                   >
                     Submit Details
                   </button>

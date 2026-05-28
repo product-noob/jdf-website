@@ -13,22 +13,26 @@ export default function Navbar() {
 
   const navLinks = [
     { name: t.nav.home, href: '/#' },
-    { name: t.nav.darshanTours, href: '/#tours' },
     { name: t.nav.pastYatras, href: '/past-yatras' },
     { name: t.nav.seva, href: '/#seva' },
+    { name: t.nav.team, href: '/team' },
   ];
 
   return (
-    <motion.header 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-cream/95 backdrop-blur-md border-b border-slate/10 shadow-sm py-4"
+    <header 
+      className="fixed top-0 left-0 right-0 z-50 h-[72px] transition-all duration-300 bg-paper-warm/95 backdrop-blur-md border-b border-line shadow-sm"
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-serif font-bold text-xl">
-            JDF
+            <img
+              src={`${import.meta.env.BASE_URL}images/JDF_Logo.png`}
+              alt="JDF Logo"
+              width={40}
+              height={40}
+              decoding="async"
+              className="w-full h-full object-contain"
+            />
           </div>
           <span className="font-serif font-semibold text-xl text-charcoal tracking-tight hidden sm:block">
             Jain Dosti Federation
@@ -61,9 +65,10 @@ export default function Navbar() {
             onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
             className="flex items-center gap-1.5 text-slate hover:text-primary transition-colors text-sm font-medium"
             title="Toggle Language"
+            aria-label="Toggle language"
           >
             <Globe size={16} />
-            {language === 'en' ? 'हिंदी' : 'English'}
+            {language === 'en' ? 'हिन्दी' : 'English'}
           </button>
 
           <a
@@ -79,6 +84,7 @@ export default function Navbar() {
           <button 
             onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
             className="text-slate hover:text-primary flex items-center gap-1 text-sm font-medium"
+            aria-label="Toggle language"
           >
             <Globe size={20} />
             <span className="sr-only">Toggle Language</span>
@@ -86,6 +92,8 @@ export default function Navbar() {
           <button
             className="text-charcoal p-2 -mr-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -99,7 +107,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-cream border-t border-slate/10 overflow-hidden"
+            className="md:hidden bg-paper-warm border-t border-line overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -134,6 +142,6 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }

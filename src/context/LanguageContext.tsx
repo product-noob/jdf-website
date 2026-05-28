@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { translations, Language } from '../i18n/translations';
 
 interface LanguageContextType {
@@ -10,13 +10,25 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window === 'undefined') return 'en';
+    return window.localStorage.getItem('jdf-language') === 'hi' ? 'hi' : 'en';
+  });
 
-  const value = {
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+  };
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    window.localStorage.setItem('jdf-language', language);
+  }, [language]);
+
+  const value = useMemo(() => ({
     language,
     setLanguage,
     t: translations[language],
-  };
+  }), [language]);
 
   return (
     <LanguageContext.Provider value={value}>

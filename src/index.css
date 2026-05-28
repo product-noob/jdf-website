@@ -11,14 +11,50 @@
   --color-alabaster: #FAFAFA;
   --color-charcoal: #1E1E1E;
   --color-slate: #4A4A4A;
+  --color-paper: #FFFDF8;
+  --color-paper-warm: #F8F4EC;
+  --color-paper-muted: #EFE7DA;
+  --color-ink: #1E1E1E;
+  --color-ink-muted: #5E5A54;
+  --color-line: #E8DED0;
+  --color-gold: #F0B84F;
+
+  --radius-paper: 8px;
+  --radius-panel: 16px;
+  --radius-control: 999px;
+
+  --shadow-paper: 0 1px 2px rgb(30 30 30 / 0.06), 0 12px 32px rgb(30 30 30 / 0.07);
+  --shadow-lifted: 0 18px 48px rgb(30 30 30 / 0.13);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-alabaster);
-  color: var(--color-slate);
+  background-color: var(--color-paper-warm);
+  color: var(--color-ink-muted);
   font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
+}
+
+:focus-visible {
+  outline: 3px solid color-mix(in oklab, var(--color-primary) 72%, white);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

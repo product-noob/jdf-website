@@ -2,16 +2,17 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MapPin, Calendar, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import OptimizedImage from './OptimizedImage';
 
 export default function Tours() {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const [filter, setFilter] = useState<'All' | 'National' | 'International'>('All');
   const scrollRef = useRef<HTMLDivElement>(null);
   
   const filteredTours = t.tours.toursList.filter(tour => {
     if (filter === 'All') return true;
     const isNational = tour.type === 'National' || tour.type === 'राष्ट्रीय';
-    const isInternational = tour.type === 'International' || tour.type === 'अंतर्राष्ट्रीय';
+    const isInternational = tour.type === 'International' || tour.type === 'अंतरराष्ट्रीय';
     if (filter === 'National' && isNational) return true;
     if (filter === 'International' && isInternational) return true;
     return false;
@@ -69,6 +70,7 @@ export default function Tours() {
                 <button
                   key={f.id}
                   onClick={() => setFilter(f.id as any)}
+                  aria-pressed={filter === f.id}
                   className={`px-6 py-2.5 rounded-full text-sm font-medium transition-colors ${
                     filter === f.id 
                     ? 'bg-primary text-white shadow-md shadow-primary/20' 
@@ -84,12 +86,14 @@ export default function Tours() {
               <div className="hidden md:flex gap-4">
                 <button 
                   onClick={scrollLeft}
+                  aria-label="Scroll tours left"
                   className="w-12 h-12 rounded-full border border-slate/20 flex items-center justify-center text-charcoal hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm bg-white"
                 >
                   <ChevronLeft />
                 </button>
                 <button 
                   onClick={scrollRight}
+                  aria-label="Scroll tours right"
                   className="w-12 h-12 rounded-full border border-slate/20 flex items-center justify-center text-charcoal hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm bg-white"
                 >
                   <ChevronRight />
@@ -112,12 +116,14 @@ export default function Tours() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 key={tour.id}
-                className="group bg-white rounded-3xl overflow-hidden border border-slate/5 shadow-sm hover:shadow-xl transition-all duration-300 snap-center shrink-0 w-[85vw] md:w-[calc(50%-16px)] flex flex-col"
+                className="group bg-paper rounded-panel overflow-hidden border border-line shadow-paper hover:shadow-lifted transition-all duration-300 snap-center shrink-0 w-[85vw] md:w-[calc(50%-16px)] flex flex-col"
               >
                 <div className="relative h-80 overflow-hidden shrink-0">
-                  <img 
+                  <OptimizedImage
                     src={tour.image} 
                     alt={tour.title} 
+                    width={900}
+                    height={640}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute top-6 right-6 flex gap-2">
@@ -143,7 +149,7 @@ export default function Tours() {
                   
                   <div className="space-y-4 pt-6 mt-auto border-t border-slate/10">
                     <div className="flex items-center gap-3 text-slate">
-                      <Calendar size={20} className="text-secondary" strokeWidth={1.5} />
+                      <Calendar size={20} className="text-primary" strokeWidth={1.5} />
                       <span className="font-medium text-lg text-charcoal">{tour.dates}</span>
                     </div>
                     <div className="flex items-center gap-3 text-slate">
