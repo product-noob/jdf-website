@@ -30,8 +30,8 @@ export default function JoinUs() {
           <span className="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6 uppercase tracking-wider">
             Become a Member
           </span>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-charcoal mb-6 leading-tight">
-            Join the <span className="text-primary italic">Federation</span>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-charcoal mb-6 leading-tight">
+            Join the <span className="text-primary italic">Community</span>
           </h2>
           <p className="text-slate text-lg mb-8 leading-relaxed text-pretty">
             Take the first step towards a journey of spiritual fulfillment and community service. Fill out the basic details below, and our team will get in touch to welcome you.

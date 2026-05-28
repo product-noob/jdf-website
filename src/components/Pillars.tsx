@@ -72,7 +72,7 @@ export default function Pillars() {
                   </div>
                   <div>
                     <p className="text-white/80 text-sm font-medium tracking-wide uppercase">{pillar.subtitle}</p>
-                    <h3 className="text-2xl font-serif font-bold">{pillar.title}</h3>
+                    <h3 className="text-xl font-serif font-bold">{pillar.title}</h3>
                   </div>
                 </div>
               </div>

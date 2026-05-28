@@ -13,10 +13,10 @@ export default function Motto() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h2 className="text-3xl md:text-5xl lg:text-5xl font-serif font-bold text-white tracking-wide leading-relaxed">
-            <span className="text-primary mr-2 text-5xl md:text-6xl leading-none font-sans">"</span>
+          <h2 className="text-3xl md:text-4xl lg:text-4xl font-serif font-bold text-white tracking-wide leading-relaxed">
+            <span className="text-primary mr-2 text-5xl md:text-5xl leading-none font-sans">"</span>
             {t.motto.text}
-            <span className="text-primary ml-2 text-5xl md:text-6xl leading-none font-sans">"</span>
+            <span className="text-primary ml-2 text-5xl md:text-5xl leading-none font-sans">"</span>
           </h2>
         </motion.div>
       </div>

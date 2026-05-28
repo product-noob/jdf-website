@@ -6,10 +6,12 @@ import Home from './pages/Home';
 import PastYatrasList from './pages/PastYatrasList';
 import PastYatraDetail from './pages/PastYatraDetail';
 import TeamPage from './pages/TeamPage';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <Router basename={import.meta.env.BASE_URL}>
+      <ScrollToTop />
       <LanguageProvider>
         <div className="min-h-screen bg-alabaster font-sans text-slate selection:bg-primary/20 selection:text-charcoal flex flex-col relative">
           <Navbar />

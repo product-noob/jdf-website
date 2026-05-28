@@ -14,7 +14,6 @@ export default function Navbar() {
   const navLinks = [
     { name: t.nav.home, href: '/#' },
     { name: t.nav.pastYatras, href: '/past-yatras' },
-    { name: t.nav.seva, href: '/#seva' },
     { name: t.nav.team, href: '/team' },
   ];
 
@@ -24,14 +23,14 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto h-full px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-serif font-bold text-xl">
+          <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-white font-serif font-bold text-xl overflow-hidden shrink-0">
             <img
-              src={`${import.meta.env.BASE_URL}images/JDF_Logo.png`}
+              src={`${import.meta.env.BASE_URL}images/JDF_Logo.webp`}
               alt="JDF Logo"
               width={40}
               height={40}
               decoding="async"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover"
             />
           </div>
           <span className="font-serif font-semibold text-xl text-charcoal tracking-tight hidden sm:block">

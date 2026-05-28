@@ -1,40 +1,11 @@
-import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MapPin, Calendar, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Calendar, Activity } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import OptimizedImage from './OptimizedImage';
 
 export default function Tours() {
   const { t } = useLanguage();
-  type TourFilter = 'All' | 'National' | 'International';
-  const [filter, setFilter] = useState<TourFilter>('All');
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const tourFilters: { id: TourFilter; label: string }[] = [
-    { id: 'All', label: t.tours.filterAll },
-    { id: 'National', label: t.tours.filterNational },
-    { id: 'International', label: t.tours.filterInternational },
-  ];
-  
-  const filteredTours = t.tours.toursList.filter(tour => {
-    if (filter === 'All') return true;
-    const isNational = tour.type === 'National' || tour.type === 'राष्ट्रीय';
-    const isInternational = tour.type === 'International' || tour.type === 'अंतरराष्ट्रीय';
-    if (filter === 'National' && isNational) return true;
-    if (filter === 'International' && isInternational) return true;
-    return false;
-  });
-
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -600, behavior: 'smooth' });
-    }
-  };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 600, behavior: 'smooth' });
-    }
-  };
+  const filteredTours = t.tours.toursList;
 
   return (
     <section className="py-24 bg-cream overflow-hidden" id="tours">
@@ -45,7 +16,7 @@ export default function Tours() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-5xl font-serif font-bold text-charcoal mb-4"
+              className="text-3xl md:text-4xl font-serif font-bold text-charcoal mb-4"
             >
               {t.tours.title}
             </motion.h2>
@@ -59,56 +30,9 @@ export default function Tours() {
               {t.tours.subtitle}
             </motion.p>
           </div>
-          
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="flex flex-col items-end gap-6"
-          >
-            <div className="flex gap-2 bg-white/50 p-1.5 rounded-full border border-slate/10 text-nowrap flex-wrap shrink-0">
-              {tourFilters.map((f) => (
-                <button
-                  key={f.id}
-                  onClick={() => setFilter(f.id)}
-                  aria-pressed={filter === f.id}
-                  className={`px-6 py-2.5 rounded-full text-sm font-medium transition-colors ${
-                    filter === f.id 
-                    ? 'bg-primary text-white shadow-md shadow-primary/20' 
-                    : 'text-slate hover:bg-slate/5'
-                  }`}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
-
-            {filteredTours.length > 2 && (
-              <div className="hidden md:flex gap-4">
-                <button 
-                  onClick={scrollLeft}
-                  aria-label="Scroll tours left"
-                  className="w-12 h-12 rounded-full border border-slate/20 flex items-center justify-center text-charcoal hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm bg-white"
-                >
-                  <ChevronLeft />
-                </button>
-                <button 
-                  onClick={scrollRight}
-                  aria-label="Scroll tours right"
-                  className="w-12 h-12 rounded-full border border-slate/20 flex items-center justify-center text-charcoal hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm bg-white"
-                >
-                  <ChevronRight />
-                </button>
-              </div>
-            )}
-          </motion.div>
         </div>
 
-        <div 
-          ref={scrollRef}
-          className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-8 pt-4 -mx-6 px-6 hide-scrollbar scroll-smooth"
-        >
+        <div className="flex gap-8 overflow-x-auto pb-8 pt-4 -mx-6 px-6 hide-scrollbar scroll-smooth">
           <AnimatePresence mode="popLayout">
             {filteredTours.map((tour, index) => (
               <motion.div
@@ -118,7 +42,7 @@ export default function Tours() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 key={tour.id}
-                className="group bg-paper rounded-panel overflow-hidden border border-line shadow-paper hover:shadow-lifted transition-all duration-300 snap-center shrink-0 w-[85vw] md:w-[calc(50%-16px)] flex flex-col"
+                className="group bg-paper rounded-panel overflow-hidden border border-line shadow-paper hover:shadow-lifted transition-all duration-300 w-full md:w-[calc(50%-16px)] flex flex-col"
               >
                 <div className="relative h-80 overflow-hidden shrink-0">
                   <OptimizedImage
@@ -145,7 +69,7 @@ export default function Tours() {
                     <MapPin size={18} />
                     {tour.location}
                   </div>
-                  <h3 className="text-3xl font-serif font-bold text-charcoal mb-6 group-hover:text-primary transition-colors leading-tight">
+                  <h3 className="text-2xl font-serif font-bold text-charcoal mb-4 group-hover:text-primary transition-colors leading-tight">
                     {tour.title}
                   </h3>
                   
@@ -165,16 +89,6 @@ export default function Tours() {
           </AnimatePresence>
         </div>
         
-        {/* Style for hide-scrollbar */}
-        <style>{`
-          .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-          }
-          .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-        `}</style>
       </div>
     </section>
   );

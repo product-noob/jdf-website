@@ -41,17 +41,17 @@ const imagePath = (fileName: string) => `${import.meta.env.BASE_URL}images/${fil
 const pdfPath = (fileName: string) => `${import.meta.env.BASE_URL}pdfs/${fileName}`;
 
 const yatraImages = {
-  hero1: imagePath('JDF_Hero_001.jpeg'),
-  hero2: imagePath('JDF_Hero_002.jpg'),
-  hero3: imagePath('JDF_Hero_003.jpeg'),
-  hero4: imagePath('JDF_Hero_004.png'),
-  hero5: imagePath('JDF_Hero_005.jpg'),
-  hero6: imagePath('JDF_Hero_006.png'),
-  seva: imagePath('file_00000000050c7208a2b568b976545586.png'),
-  sneh: imagePath('file_00000000a62c720b9908d1b35d8e3e67.png'),
-  cricket: imagePath('file_00000000a64c720b87adb941358be3bd.png'),
-  navpravas: imagePath('file_00000000d98472089c666b89678b25d5.png'),
-  overseas: imagePath('file_000000001e4471f88638d1164b89154f.png'),
+  hero1: imagePath('JDF_Hero_001.webp'),
+  hero2: imagePath('JDF_Hero_002.webp'),
+  hero3: imagePath('JDF_Hero_003.webp'),
+  hero4: imagePath('JDF_Hero_004.webp'),
+  hero5: imagePath('JDF_Hero_005.webp'),
+  hero6: imagePath('JDF_Hero_006.webp'),
+  seva: imagePath('file_00000000050c7208a2b568b976545586.webp'),
+  sneh: imagePath('file_00000000a62c720b9908d1b35d8e3e67.webp'),
+  cricket: imagePath('file_00000000a64c720b87adb941358be3bd.webp'),
+  navpravas: imagePath('file_00000000d98472089c666b89678b25d5.webp'),
+  overseas: imagePath('file_000000001e4471f88638d1164b89154f.webp'),
 };
 
 const gallery = (...images: string[]) => images;
@@ -298,65 +298,34 @@ const pastYatrasHi: PastYatra[] = pastYatrasEn.map((item) => ({
   }),
 }));
 
+const tourImage = (index: number) => {
+  const images = [
+    'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?q=75&w=1600&auto=format&fit=crop'
+  ];
+  return images[index] ?? '';
+};
+
 const toursEn: Tour[] = [
   {
     id: 1,
-    title: 'Shikharji Mahayatra 2026',
-    location: 'Jharkhand, India',
-    type: 'National',
-    dates: 'Oct 12 - Oct 20, 2026',
-    comfort: 'High Comfort',
-    image: 'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?q=75&w=1600&auto=format&fit=crop',
-  },
-  {
-    id: 2,
-    title: 'Girnar Ji Ascent and Retreat',
-    location: 'Gujarat, India',
-    type: 'National',
-    dates: 'Jan 05 - Jan 10, 2027',
-    comfort: 'Moderate',
-    image: 'https://images.unsplash.com/photo-1549473889-14f410d83298?q=75&w=1600&auto=format&fit=crop',
-  },
-  {
-    id: 3,
-    title: 'Southeast Asia Jain Temples',
-    location: 'Thailand and Malaysia',
+    title: 'Nepal and Sametshikar ji',
+    location: 'Nepal & Jharkhand',
     type: 'International',
-    dates: 'Mar 15 - Mar 25, 2027',
+    dates: 'Coming Soon',
     comfort: 'Premium Comfort',
-    image: 'https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?q=75&w=1600&auto=format&fit=crop',
+    image: tourImage(0),
   },
 ];
-
-const tourImage = (index: number) => toursEn[index]?.image ?? '';
 
 const toursHi: Tour[] = [
   {
     id: 1,
-    title: 'शिखरजी महायात्रा 2026',
-    location: 'झारखंड, भारत',
-    type: 'राष्ट्रीय',
-    dates: '12 अक्टूबर - 20 अक्टूबर, 2026',
-    comfort: 'उच्च आराम',
-    image: tourImage(0),
-  },
-  {
-    id: 2,
-    title: 'गिरनार जी आरोहण और वापसी',
-    location: 'गुजरात, भारत',
-    type: 'राष्ट्रीय',
-    dates: '05 जनवरी - 10 जनवरी, 2027',
-    comfort: 'मध्यम',
-    image: tourImage(1),
-  },
-  {
-    id: 3,
-    title: 'दक्षिण पूर्व एशिया जैन मंदिर',
-    location: 'थाईलैंड और मलेशिया',
+    title: 'नेपाल और सम्मेद शिखर जी',
+    location: 'नेपाल और झारखंड',
     type: 'अंतरराष्ट्रीय',
-    dates: '15 मार्च - 25 मार्च, 2027',
+    dates: 'जल्द आ रहा है',
     comfort: 'प्रीमियम आराम',
-    image: tourImage(2),
+    image: tourImage(0),
   },
 ];
 
@@ -457,7 +426,7 @@ export const translations = {
     nav: {
       home: 'Home',
       darshanTours: 'Darshan Tours',
-      pastYatras: 'Past Yatras',
+      pastYatras: 'Yatras',
       seva: 'Seva',
       aboutUs: 'About Us',
       joinUs: 'Join Us',
@@ -551,7 +520,7 @@ export const translations = {
     nav: {
       home: 'होम',
       darshanTours: 'दर्शन यात्राएं',
-      pastYatras: 'पिछली यात्राएं',
+      pastYatras: 'यात्राएं',
       seva: 'सेवा',
       aboutUs: 'हमारे बारे में',
       joinUs: 'हमसे जुड़ें',
